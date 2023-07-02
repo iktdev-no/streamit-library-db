@@ -1,11 +1,27 @@
 package no.iktdev.library.db.datasource
 
+import com.sun.tools.javac.main.Option.InvalidValueException
+import no.iktdev.streamit.library.db.DatabaseEnv
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class MySqlDataSource(databaseName: String, address: String, username: String, password: String): DataSource("jdbc:mysql", databaseName, address, username, password) {
+class MySqlDataSource(databaseName: String, address: String, port: String, username: String, password: String): DataSource("jdbc:mysql", databaseName =  databaseName, address =  address, port = port, username = username, password = password) {
+    companion object {
+        fun fromDatabaseEnv(): MySqlDataSource {
+            if (DatabaseEnv.database.isNullOrBlank()) throw InvalidValueException("Database name is not defined in 'DATABASE_NAME'")
+            if (DatabaseEnv.username.isNullOrBlank()) throw InvalidValueException("Database username is not defined in 'DATABASE_USERNAME'")
+            if (DatabaseEnv.address.isNullOrBlank()) throw InvalidValueException("Database address is not defined in 'DATABASE_ADDRESS'")
+            return MySqlDataSource(
+                databaseName = DatabaseEnv.database,
+                address = DatabaseEnv.address,
+                port = DatabaseEnv.port ?: "",
+                username = DatabaseEnv.username,
+                password = DatabaseEnv.password ?: ""
+            )
+        }
+    }
 
     override fun createDatabase(): Database? {
         val ok = transaction(toDatabaseServerConnection()) {
