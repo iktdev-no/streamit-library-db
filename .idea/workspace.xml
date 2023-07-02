@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/DatabaseEnv.kt" afterDir="false" />
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated MySql">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/DataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/DataSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/MySqlDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/MySqlDataSource.kt" afterDir="false" />
@@ -65,11 +64,18 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1688335820141</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Updated MySql">
+      <created>1688338049981</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1688338049981</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Updated MySql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated MySql" />
   </component>
 </project>

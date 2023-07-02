@@ -1,18 +1,16 @@
-package no.iktdev.library.db.datasource
+package no.iktdev.streamit.library.db.datasource
 
-import com.sun.tools.javac.main.Option.InvalidValueException
 import no.iktdev.streamit.library.db.DatabaseEnv
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class MySqlDataSource(databaseName: String, address: String, port: String, username: String, password: String): DataSource("jdbc:mysql", databaseName =  databaseName, address =  address, port = port, username = username, password = password) {
     companion object {
         fun fromDatabaseEnv(): MySqlDataSource {
-            if (DatabaseEnv.database.isNullOrBlank()) throw InvalidValueException("Database name is not defined in 'DATABASE_NAME'")
-            if (DatabaseEnv.username.isNullOrBlank()) throw InvalidValueException("Database username is not defined in 'DATABASE_USERNAME'")
-            if (DatabaseEnv.address.isNullOrBlank()) throw InvalidValueException("Database address is not defined in 'DATABASE_ADDRESS'")
+            if (DatabaseEnv.database.isNullOrBlank()) throw RuntimeException("Database name is not defined in 'DATABASE_NAME'")
+            if (DatabaseEnv.username.isNullOrBlank()) throw RuntimeException("Database username is not defined in 'DATABASE_USERNAME'")
+            if (DatabaseEnv.address.isNullOrBlank()) throw RuntimeException("Database address is not defined in 'DATABASE_ADDRESS'")
             return MySqlDataSource(
                 databaseName = DatabaseEnv.database,
                 address = DatabaseEnv.address,

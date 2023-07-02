@@ -1,4 +1,4 @@
-package no.iktdev.library.db.datasource
+package no.iktdev.streamit.library.db.datasource
 
 import org.jetbrains.exposed.sql.Database
 
