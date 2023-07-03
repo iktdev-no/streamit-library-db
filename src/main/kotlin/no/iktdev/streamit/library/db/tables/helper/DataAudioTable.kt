@@ -1,9 +1,9 @@
-package no.iktdev.library.db.tables.helper
+package no.iktdev.streamit.library.db.tables.helper
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
 
-object DataAudioTable : IntIdTable() {
+object data_audio : IntIdTable() {
     val file: Column<String> = varchar("source", 200).uniqueIndex() // Currently Audio Stream is embedded in video file. Might change at a later date
     val codec: Column<String> = varchar("codec", 12)
     val channels: Column<Int?> = integer("channels").nullable()

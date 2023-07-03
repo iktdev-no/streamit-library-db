@@ -1,11 +1,11 @@
-package no.iktdev.library.db.tables.helper
+package no.iktdev.streamit.library.db.tables.helper
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.javatime.datetime
 import java.time.LocalDateTime
 
-object CastErrorTable : IntIdTable() {
+object cast_errors : IntIdTable() {
     val file: Column<String> = varchar("source", 200)
     val deviceModel: Column<String> = varchar("deviceModel", 50)
     val deviceManufacturer: Column<String> = varchar("deviceManufacturer", 50)

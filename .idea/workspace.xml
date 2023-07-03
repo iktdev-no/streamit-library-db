@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated MySql">
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated Tbl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/GenreTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/GenreTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/MovieTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/MovieTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SerieTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SerieTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SubtitleTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SubtitleTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SummaryTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SummaryTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/UserTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/UserTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/CastErrorTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/CastErrorTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataAudioTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataAudioTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataVideoTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataVideoTable.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,12 +77,19 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1688338521060</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Updated Tbl">
+      <created>1688343036411</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1688343036411</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
     <MESSAGE value="Updated MySql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated MySql" />
+    <MESSAGE value="Updated Tbl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Tbl" />
   </component>
 </project>
