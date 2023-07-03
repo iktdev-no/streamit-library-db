@@ -1,9 +1,9 @@
-package no.iktdev.library.db.tables
+package no.iktdev.streamit.library.db.tables
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
 
-object ProgressTable : IntIdTable() {
+object progress : IntIdTable() {
     val guid: Column<String> = varchar("guid", 50)
     val type: Column<String> = varchar("type", 10)
     val title: Column<String> = varchar("title", 100)
