@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class MySqlDataSource(databaseName: String, address: String, port: String, username: String, password: String): DataSource("jdbc:mysql", databaseName =  databaseName, address =  address, port = port, username = username, password = password) {
+open class MySqlDataSource(databaseName: String, address: String, port: String = "", username: String, password: String): DataSource(databaseName =  databaseName, address =  address, port = port, username = username, password = password) {
     companion object {
         fun fromDatabaseEnv(): MySqlDataSource {
             if (DatabaseEnv.database.isNullOrBlank()) throw RuntimeException("Database name is not defined in 'DATABASE_NAME'")
@@ -32,7 +32,7 @@ class MySqlDataSource(databaseName: String, address: String, port: String, usern
 
             if (!databaseExists) {
                 try {
-                    exec("CREATE DATABASE $databaseName")
+                    exec(createDatabaseStatement())
                     println("Database $databaseName created.")
                     true
                 } catch (e: Exception) {
@@ -45,7 +45,31 @@ class MySqlDataSource(databaseName: String, address: String, port: String, usern
             }
         }
 
-        return if (ok) super.createDatabase() else null
+        return if (ok) toDatabase() else null
+    }
+
+    override fun createDatabaseStatement(): String {
+        return "CREATE DATABASE $databaseName"
+    }
+
+    protected fun toDatabaseServerConnection(): Database {
+        return Database.connect(
+            toConnectionUrl(),
+            user = username,
+            password = password
+        )
+    }
+
+    fun toDatabase(): Database {
+        return Database.connect(
+            "${toConnectionUrl()}/$databaseName",
+            user = username,
+            password = password
+        )
+    }
+
+    override fun toConnectionUrl(): String {
+        return "jdbc:mysql://${toPortedAddress()}"
     }
 
 }

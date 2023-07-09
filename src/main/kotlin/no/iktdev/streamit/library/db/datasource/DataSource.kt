@@ -2,32 +2,18 @@ package no.iktdev.streamit.library.db.datasource
 
 import org.jetbrains.exposed.sql.Database
 
-open class DataSource(val connectionUrl: String, val databaseName: String, val address: String, val port: String?, val username: String, val password: String) {
+abstract class DataSource(val databaseName: String, val address: String, val port: String?, val username: String, val password: String) {
 
-    open fun createDatabase(): Database? {
-        return toDatabase()
-    }
+    abstract fun createDatabase(): Database?
+
+    abstract fun createDatabaseStatement(): String
+
+    abstract fun toConnectionUrl(): String
 
     fun toPortedAddress(): String {
-        return if (!address.contains(":") && port?.isNullOrBlank() != true) {
+        return if (!address.contains(":") && port?.isBlank() != true) {
             "$address:$port"
         } else address
-    }
-
-     protected fun toDatabaseServerConnection(): Database {
-        return Database.connect(
-            "$connectionUrl://${toPortedAddress()}",
-            user = username,
-            password = password
-        )
-    }
-
-    fun toDatabase(): Database {
-        return Database.connect(
-            "$connectionUrl://${toPortedAddress()}/$databaseName",
-            user = username,
-            password = password
-        )
     }
 
 }
