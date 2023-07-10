@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Added H2">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Added defaults">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/BaseQuery.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SerieTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SerieTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +221,14 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1688945002333</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="Added defaults">
+      <option name="closed" value="true" />
+      <created>1689022554700</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1689022554700</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -229,6 +236,7 @@
     <MESSAGE value="Updated MySql" />
     <MESSAGE value="Updated Tbl" />
     <MESSAGE value="Added H2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added H2" />
+    <MESSAGE value="Added defaults" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added defaults" />
   </component>
 </project>

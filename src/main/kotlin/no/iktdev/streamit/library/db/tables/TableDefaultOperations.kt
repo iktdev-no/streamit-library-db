@@ -11,24 +11,24 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 open class TableDefaultOperations<T: Table> {
 
-    fun <T> Table.insertWithSuccess(block: () -> T): Boolean {
-        return try {
-            transaction { block }
-            true
-        } catch (e : Exception) {
-            e.printStackTrace()
-            false
-        }
+}
+
+fun <T> withTransaction(block: () -> T): T? {
+    return try {
+        transaction { block() }
+    } catch (e: Exception) {
+        // log the error here
+        null
     }
+}
 
-
-    protected fun <T> withTransaction(block: () -> T): T? {
-        return try {
-            transaction { block() }
-        } catch (e: Exception) {
-            // log the error here
-            null
-        }
+fun <T> insertWithSuccess(block: () -> T): Boolean {
+    return try {
+        transaction { block }
+        true
+    } catch (e : Exception) {
+        e.printStackTrace()
+        false
     }
 }
 
