@@ -2,7 +2,9 @@ package no.iktdev.streamit.library.db.tables
 
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.javatime.timestamp
+import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.Instant
 
 object catalog : IntIdTable() {
@@ -12,7 +14,7 @@ object catalog : IntIdTable() {
     var collection: Column<String> = varchar("collection", 100)
     var iid: Column<Int?> = integer("iid").nullable()
     var genres: Column<String?> = varchar("genres", 24).nullable()
-    val added: Column<Instant> = timestamp("added")
+    val added: Column<Instant> = timestamp("added").default(Instant.now())
 
     init {
         uniqueIndex(title, type)
