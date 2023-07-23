@@ -3,8 +3,10 @@ package no.iktdev.streamit.library.db.query
 import no.iktdev.streamit.library.db.tables.catalog
 import no.iktdev.streamit.library.db.tables.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.withTransaction
+import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.insertAndGetId
+import org.jetbrains.exposed.sql.select
 
 class CatalogQuery(
     val title: String,
@@ -62,5 +64,13 @@ class CatalogQuery(
         return serieSuccess && catalogSuccess
     }
 
-    
+    fun getId(): Int? {
+        return withTransaction {
+            catalog.select { catalog.title eq title }.andWhere {
+                catalog.type eq type
+            }.map { it[catalog.id].value }.firstOrNull()
+        }
+    }
+
+
 }
