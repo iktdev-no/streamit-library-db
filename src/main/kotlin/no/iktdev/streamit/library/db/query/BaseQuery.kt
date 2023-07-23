@@ -16,4 +16,5 @@ open class BaseQuery {
     open fun insertAndGetStatus(): Boolean {
         return false
     }
+
 }
