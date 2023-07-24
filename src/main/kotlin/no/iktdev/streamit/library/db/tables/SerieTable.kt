@@ -11,4 +11,5 @@ object serie: IntIdTable() {
     val season: Column<Int> = integer("season")
     val collection: Column<String> = varchar("collection", 250)
     val video: Column<String> = varchar("video", 250).uniqueIndex()
+    val added: Column<Instant> = timestamp("added")
 }
