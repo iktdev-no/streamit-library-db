@@ -4,11 +4,13 @@ import no.iktdev.streamit.library.db.tables.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.subtitle
 import org.jetbrains.exposed.sql.insert
 
+@SuppressWarnings("CanBePrivate")
 class SubtitleQuery(
-    val title: String,
-    val language: String = "eng",
-    val collection: String,
-    val format: String
+    @SuppressWarnings("CanBePrivate") val associatedWithVideo: String,
+    @SuppressWarnings("CanBePrivate") val language: String = "eng",
+    @SuppressWarnings("CanBePrivate") val collection: String,
+    @SuppressWarnings("CanBePrivate") val file: String,
+    @SuppressWarnings("CanBePrivate") val format: String
 ): BaseQuery() {
 
     override fun insert() {
@@ -17,10 +19,11 @@ class SubtitleQuery(
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
             subtitle.insert {
-                it[title] = this@SubtitleQuery.title
+                it[associatedWithVideo] = this@SubtitleQuery.associatedWithVideo
                 it[language] = this@SubtitleQuery.language
                 it[collection] = this@SubtitleQuery.collection
                 it[format] = this@SubtitleQuery.format
+                it[subtitle] = this@SubtitleQuery.file
             }
         }
     }

@@ -10,7 +10,7 @@ import java.time.Instant
 import java.time.LocalDateTime
 
 object serie: IntIdTable() {
-    val title: Column<String> = varchar("title", 250)
+    val title: Column<String?> = varchar("title", 250).nullable()
     val episode: Column<Int> = integer("episode")
     val season: Column<Int> = integer("season")
     val collection: Column<String> = varchar("collection", 250)

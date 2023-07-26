@@ -6,7 +6,7 @@ import no.iktdev.streamit.library.db.tables.withTransaction
 import org.jetbrains.exposed.sql.insert
 
 class SerieQuery(
-    val title: String,
+    val title: String?,
     val episode: Int,
     val season: Int,
     val collection: String,
