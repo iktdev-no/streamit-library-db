@@ -3,6 +3,7 @@ package no.iktdev.streamit.library.db.query
 import no.iktdev.streamit.library.db.tables.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.subtitle
 import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.insertIgnore
 
 @SuppressWarnings("CanBePrivate")
 class SubtitleQuery(
@@ -18,7 +19,7 @@ class SubtitleQuery(
     }
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
-            subtitle.insert {
+            subtitle.insertIgnore {
                 it[associatedWithVideo] = this@SubtitleQuery.associatedWithVideo
                 it[language] = this@SubtitleQuery.language
                 it[collection] = this@SubtitleQuery.collection

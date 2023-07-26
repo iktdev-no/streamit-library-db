@@ -12,6 +12,9 @@ open class BaseQuery {
     }
 
 
+    /**
+     * Will return true as success if ignored.
+     */
     @JvmSynthetic
     open fun insertAndGetStatus(): Boolean {
         return false

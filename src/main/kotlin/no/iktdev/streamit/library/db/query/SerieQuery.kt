@@ -4,6 +4,7 @@ import no.iktdev.streamit.library.db.tables.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.serie
 import no.iktdev.streamit.library.db.tables.withTransaction
 import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.insertIgnore
 
 class SerieQuery(
     val title: String?,
@@ -19,7 +20,7 @@ class SerieQuery(
 
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
-            serie.insert {
+            serie.insertIgnore {
                 it[title] = this@SerieQuery.title
                 it[episode] = this@SerieQuery.episode
                 it[season] = this@SerieQuery.season

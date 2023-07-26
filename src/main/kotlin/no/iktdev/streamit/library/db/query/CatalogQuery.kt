@@ -3,10 +3,7 @@ package no.iktdev.streamit.library.db.query
 import no.iktdev.streamit.library.db.tables.catalog
 import no.iktdev.streamit.library.db.tables.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.withTransaction
-import org.jetbrains.exposed.sql.andWhere
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.insertAndGetId
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.*
 
 class CatalogQuery(
     val title: String,
@@ -22,7 +19,7 @@ class CatalogQuery(
 
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
-            catalog.insert {
+            catalog.insertIgnore {
                 it[title] = this@CatalogQuery.title
                 it[cover] = this@CatalogQuery.cover
                 it[type] = this@CatalogQuery.type
