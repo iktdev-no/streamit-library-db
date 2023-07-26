@@ -10,6 +10,10 @@ class SubtitleQuery(
     val collection: String,
     val format: String
 ): BaseQuery() {
+
+    override fun insert() {
+        insertAndGetStatus()
+    }
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
             subtitle.insert {

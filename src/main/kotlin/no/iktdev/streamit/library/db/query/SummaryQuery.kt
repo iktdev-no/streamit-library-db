@@ -21,12 +21,6 @@ class SummaryQuery(
     }
 
     override fun insert() {
-        withTransaction {
-            summary.insert {
-                it[cid] = this@SummaryQuery.cid
-                it[language] = this@SummaryQuery.language
-                it[description] = this@SummaryQuery.description
-            }
-        }
+        insertAndGetStatus()
     }
 }

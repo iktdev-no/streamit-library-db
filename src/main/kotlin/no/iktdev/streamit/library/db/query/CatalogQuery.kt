@@ -17,16 +17,7 @@ class CatalogQuery(
     val genres: String? = null
 ) : BaseQuery() {
     override fun insert() {
-        withTransaction {
-            catalog.insertAndGetId {
-                it[title] = this@CatalogQuery.title
-                it[cover] = this@CatalogQuery.cover
-                it[type] = this@CatalogQuery.type
-                it[collection] = this@CatalogQuery.collection
-                it[iid] = this@CatalogQuery.iid
-                it[genres] = this@CatalogQuery.genres
-            }
-        }
+        insertAndGetStatus()
     }
 
     override fun insertAndGetStatus(): Boolean {

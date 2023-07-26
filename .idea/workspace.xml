@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Added queries">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/GenreQuery.kt" afterDir="false" />
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Adjusting to use clientDefaults">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/BaseQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/BaseQuery.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,8 +241,54 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1690078686975</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="Query updates">
+      <option name="closed" value="true" />
+      <created>1690114807628</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1690114807628</updated>
+    </task>
+    <task id="LOCAL−00011" summary="Query updates">
+      <option name="closed" value="true" />
+      <created>1690116239538</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1690116239538</updated>
+    </task>
+    <task id="LOCAL−00012" summary="Query updates">
+      <option name="closed" value="true" />
+      <created>1690116587960</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1690116587960</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Re-added missing column">
+      <option name="closed" value="true" />
+      <created>1690241683084</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1690241683084</updated>
+    </task>
+    <task id="LOCAL−00014" summary="Adjusting to use clientDefaults">
+      <option name="closed" value="true" />
+      <created>1690243342712</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1690243342712</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
@@ -249,6 +297,9 @@
     <MESSAGE value="Added H2" />
     <MESSAGE value="Added defaults" />
     <MESSAGE value="Added queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added queries" />
+    <MESSAGE value="Query updates" />
+    <MESSAGE value="Re-added missing column" />
+    <MESSAGE value="Adjusting to use clientDefaults" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusting to use clientDefaults" />
   </component>
 </project>

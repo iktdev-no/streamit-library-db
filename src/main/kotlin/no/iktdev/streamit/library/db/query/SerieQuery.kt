@@ -13,6 +13,10 @@ class SerieQuery(
     val video: String
 ): BaseQuery() {
 
+    override fun insert() {
+        insertAndGetStatus()
+    }
+
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
             serie.insert {

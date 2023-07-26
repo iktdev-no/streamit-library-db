@@ -15,5 +15,8 @@ class MovieQuery(val videoFile: String): BaseQuery() {
         }
     }
 
+    override fun insert() {
+        insertAndGetId()
+    }
 
 }
