@@ -17,6 +17,7 @@ fun <T> withTransaction(block: () -> T): T? {
     return try {
         transaction { block() }
     } catch (e: Exception) {
+        e.printStackTrace()
         // log the error here
         null
     }
