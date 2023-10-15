@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.upsert
 
 class ResumeOrNextQuery(
     val userId: String,
-    val ignore: Boolean = false,
+    val ignore: Boolean? = null,
     val type: String,
     val collection: String,
     val episode: Int? = null,
@@ -20,8 +20,10 @@ class ResumeOrNextQuery(
         return executeWithStatus {
             resumeOrNext.upsert(resumeOrNext.collection, resumeOrNext.type, resumeOrNext.userId) {
                 it[userId] = userId
-                it[ignore] = ignore
                 it[type] = type
+                if (this@ResumeOrNextQuery.ignore != null) {
+                    it[ignore] = this@ResumeOrNextQuery.ignore
+                }
                 it[collection] = collection
                 it[episode] = episode
                 it[season] = season

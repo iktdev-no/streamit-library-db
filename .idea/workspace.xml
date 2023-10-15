@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated with new table">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CommonQueryFuncions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ResumeOrNextTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated with new table and upsert">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/Helpers.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +40,7 @@
         <option value="Kotlin Object" />
         <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -302,7 +297,14 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1690389461350</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Updated with new table and upsert">
+      <option name="closed" value="true" />
+      <created>1697379235728</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1697379235728</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,6 +332,7 @@
     <MESSAGE value="Corrections to invoke" />
     <MESSAGE value="Corrections to structure" />
     <MESSAGE value="Updated with new table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated with new table" />
+    <MESSAGE value="Updated with new table and upsert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated with new table and upsert" />
   </component>
 </project>
