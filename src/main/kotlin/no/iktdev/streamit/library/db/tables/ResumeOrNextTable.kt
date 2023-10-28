@@ -11,7 +11,7 @@ object resumeOrNext : IntIdTable() {
     val ignore: Column<Boolean> = bool("ignore").default(false)
 
     val type: Column<String> = varchar("type", 10)
-    val collection: Column<String?> = varchar("collection", 250).nullable()
+    val collection: Column<String> = varchar("collection", 250)
     val episode: Column<Int?> = integer("episode").nullable()
     val season: Column<Int?> = integer("season").nullable()
     val video: Column<String> = varchar("video", 100)
