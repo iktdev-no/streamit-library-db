@@ -1,9 +1,6 @@
 package no.iktdev.streamit.library.db.query
 
-import no.iktdev.streamit.library.db.tables.catalog
-import no.iktdev.streamit.library.db.tables.executeWithStatus
-import no.iktdev.streamit.library.db.tables.insertWithSuccess
-import no.iktdev.streamit.library.db.tables.resumeOrNext
+import no.iktdev.streamit.library.db.tables.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.javatime.CurrentDateTime
@@ -19,14 +16,16 @@ class ResumeOrNextQuery(
 ) : CommonQueryFuncions {
 
     fun upsertAndGetStatus(): Boolean {
-        return executeWithStatus {
-            val isPresent = resumeOrNext.select(
+        val isPresent = withTransaction {
+            resumeOrNext.select(
                 resumeOrNext.collection.eq(collection)
                     .and(resumeOrNext.type.eq(type))
                     .and(resumeOrNext.userId.eq(userId))
-            ).singleOrNull() != null
+            ).singleOrNull()
+        } != null
 
-            if (!isPresent) {
+        return if (!isPresent) {
+            executeWithStatus {
                 resumeOrNext.insert {
                     it[userId] = this@ResumeOrNextQuery.userId
                     it[type] = this@ResumeOrNextQuery.type
@@ -38,7 +37,9 @@ class ResumeOrNextQuery(
                     it[season] = this@ResumeOrNextQuery.season
                     it[video] = this@ResumeOrNextQuery.video
                 }
-            } else {
+            }
+        } else {
+            executeWithStatus {
                 resumeOrNext.update({
                     resumeOrNext.collection.eq(collection)
                         .and(resumeOrNext.type.eq(type))
@@ -54,5 +55,7 @@ class ResumeOrNextQuery(
                 }
             }
         }
+
+
     }
 }
