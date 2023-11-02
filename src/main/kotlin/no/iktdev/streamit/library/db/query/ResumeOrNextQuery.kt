@@ -3,7 +3,9 @@ package no.iktdev.streamit.library.db.query
 import no.iktdev.streamit.library.db.tables.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.javatime.CurrentDate
 import org.jetbrains.exposed.sql.javatime.CurrentDateTime
+import java.time.LocalDateTime
 
 class ResumeOrNextQuery(
     val userId: String,
@@ -12,7 +14,8 @@ class ResumeOrNextQuery(
     val collection: String,
     val episode: Int? = null,
     val season: Int? = null,
-    val video: String
+    val video: String,
+    val updated: LocalDateTime? = null
 ) : CommonQueryFuncions {
 
     fun upsertAndGetStatus(): Boolean {
@@ -36,6 +39,7 @@ class ResumeOrNextQuery(
                     it[episode] = this@ResumeOrNextQuery.episode
                     it[season] = this@ResumeOrNextQuery.season
                     it[video] = this@ResumeOrNextQuery.video
+                    it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
             }
         } else {
@@ -51,7 +55,7 @@ class ResumeOrNextQuery(
                     it[episode] = episode
                     it[season] = season
                     it[video] = video
-                    it[updated] = CurrentDateTime
+                    it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
             }
         }
