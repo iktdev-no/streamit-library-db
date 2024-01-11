@@ -17,7 +17,7 @@ object progress : IntIdTable() {
     val video: Column<String> = varchar("video", 100)
     val progress: Column<Int> = integer("progress")
     val duration: Column<Int> = integer("duration")
-    val played: Column<LocalDateTime?> = datetime("played").defaultExpression(CurrentDateTime).nullable()
+    val played: Column<LocalDateTime?> = datetime("played").nullable()
 
     init {
 
