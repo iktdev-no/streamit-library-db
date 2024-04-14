@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.20"
     id("maven-publish")
 }
 
@@ -11,7 +11,7 @@ repositories {
     mavenCentral()
 }
 
-val exposedVersion = "0.38.2"
+val exposedVersion = "0.44.0"
 dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")

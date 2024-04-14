@@ -13,6 +13,6 @@ object cast_errors : IntIdTable() {
     val deviceAndroidVersion = varchar("androidVersion", 10)
     val appVersion = varchar("appVersion", 10)
     val castDeviceName: Column<String> = varchar("castDeviceName", 50)
-    val error = text("error")
+    val error = text("error").nullable()
     val timestamp = datetime("timestamp").clientDefault { LocalDateTime.now() }
 }

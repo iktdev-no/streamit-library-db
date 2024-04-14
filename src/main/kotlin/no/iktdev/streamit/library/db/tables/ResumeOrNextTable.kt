@@ -6,20 +6,18 @@ import org.jetbrains.exposed.sql.javatime.CurrentDateTime
 import org.jetbrains.exposed.sql.javatime.datetime
 import java.time.LocalDateTime
 
-val userIdLength: Int = 50
-object progress : IntIdTable() {
-    val guid: Column<String> = varchar("guid", userIdLength)
+object resumeOrNext : IntIdTable() {
+    val userId: Column<String> = varchar("userId", userIdLength)
+    val ignore: Column<Boolean> = bool("ignore").default(false)
+
     val type: Column<String> = varchar("type", 10)
-    val title: Column<String> = varchar("title", 100)
-    val collection: Column<String?> = varchar("collection", 250).nullable()
+    val collection: Column<String> = varchar("collection", 250)
     val episode: Column<Int?> = integer("episode").nullable()
     val season: Column<Int?> = integer("season").nullable()
     val video: Column<String> = varchar("video", 100)
-    val progress: Column<Int> = integer("progress")
-    val duration: Column<Int> = integer("duration")
-    val played: Column<LocalDateTime?> = datetime("played").nullable()
+    val updated: Column<LocalDateTime> = datetime("played").defaultExpression(CurrentDateTime)
 
     init {
-
+        uniqueIndex(collection, type, userId)
     }
 }
