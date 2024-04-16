@@ -19,6 +19,18 @@ class CatalogQuery(
 
     override fun insertAndGetStatus(): Boolean {
         return insertWithSuccess {
+            if (this@CatalogQuery.type == "serie") {
+                val existing = catalog.select {
+                    (catalog.collection eq this@CatalogQuery.collection) and
+                            (catalog.type eq "serie")
+                }.firstOrNull()
+                if (existing != null) {
+                    exposedLogger.info("Collection ${this.collection} already exists for serie, skipping")
+                    return@insertWithSuccess true
+                }
+
+            }
+
             catalog.insertIgnore {
                 it[title] = this@CatalogQuery.title
                 it[cover] = this@CatalogQuery.cover
