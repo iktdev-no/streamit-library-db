@@ -10,11 +10,11 @@ val userIdLength: Int = 50
 object progress : IntIdTable() {
     val guid: Column<String> = varchar("guid", userIdLength)
     val type: Column<String> = varchar("type", 10)
-    val title: Column<String> = varchar("title", 100)
+    val title: Column<String> = varchar("title", 250)
     val collection: Column<String?> = varchar("collection", 250).nullable()
     val episode: Column<Int?> = integer("episode").nullable()
     val season: Column<Int?> = integer("season").nullable()
-    val video: Column<String> = varchar("video", 100)
+    val video: Column<String> = varchar("video", 250)
     val progress: Column<Int> = integer("progress")
     val duration: Column<Int> = integer("duration")
     val played: Column<LocalDateTime?> = datetime("played").nullable()

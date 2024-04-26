@@ -14,7 +14,7 @@ object resumeOrNext : IntIdTable() {
     val collection: Column<String> = varchar("collection", 250)
     val episode: Column<Int?> = integer("episode").nullable()
     val season: Column<Int?> = integer("season").nullable()
-    val video: Column<String> = varchar("video", 100)
+    val video: Column<String> = varchar("video", 250)
     val updated: Column<LocalDateTime> = datetime("played").defaultExpression(CurrentDateTime)
 
     init {
