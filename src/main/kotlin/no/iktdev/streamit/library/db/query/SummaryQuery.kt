@@ -1,9 +1,7 @@
 package no.iktdev.streamit.library.db.query
 
-import no.iktdev.streamit.library.db.tables.insertWithSuccess
+import no.iktdev.streamit.library.db.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.summary
-import no.iktdev.streamit.library.db.tables.withTransaction
-import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.insertIgnore
 
 class SummaryQuery(

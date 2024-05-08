@@ -1,8 +1,8 @@
 package no.iktdev.streamit.library.db.query
 
+import no.iktdev.streamit.library.db.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.catalog
-import no.iktdev.streamit.library.db.tables.insertWithSuccess
-import no.iktdev.streamit.library.db.tables.withTransaction
+import no.iktdev.streamit.library.db.withTransaction
 import org.jetbrains.exposed.sql.*
 
 class CatalogQuery(
