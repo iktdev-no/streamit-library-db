@@ -1,6 +1,6 @@
 package no.iktdev.streamit.library.db.query
 
-import no.iktdev.streamit.library.db.tables.insertWithSuccess
+import no.iktdev.streamit.library.db.insertWithSuccess
 import no.iktdev.streamit.library.db.tables.subtitle
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.insertIgnore

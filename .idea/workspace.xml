@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated catalog insert">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/TableDefaultOperations.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/registeredDevices.kt" afterDir="false" />
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated imports + new table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TableDefaultOperations.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,7 +408,14 @@
       <option name="presentableId" value="LOCAL−00030" />
       <updated>1713282164444</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL−00031" summary="Updated imports + new table">
+      <option name="closed" value="true" />
+      <created>1715191521300</created>
+      <option name="number" value="LOCAL−00031" />
+      <option name="presentableId" value="LOCAL−00031" />
+      <updated>1715191521300</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -451,6 +453,7 @@
     <MESSAGE value="Adding new table" />
     <MESSAGE value="Updated column" />
     <MESSAGE value="Updated catalog insert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated catalog insert" />
+    <MESSAGE value="Updated imports + new table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated imports + new table" />
   </component>
 </project>

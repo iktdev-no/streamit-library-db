@@ -1,10 +1,13 @@
 package no.iktdev.streamit.library.db.query
 
-import no.iktdev.streamit.library.db.tables.*
-import org.jetbrains.exposed.sql.*
+import no.iktdev.streamit.library.db.executeWithStatus
+import no.iktdev.streamit.library.db.tables.resumeOrNext
+import no.iktdev.streamit.library.db.withTransaction
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.javatime.CurrentDate
-import org.jetbrains.exposed.sql.javatime.CurrentDateTime
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.update
 import java.time.LocalDateTime
 
 class ResumeOrNextQuery(
