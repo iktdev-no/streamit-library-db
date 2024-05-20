@@ -13,6 +13,7 @@ object delegatedAuthenticationTable: IntIdTable() {
     val requesterId: Column<String> = char("requesterId", 64)
     val created: Column<LocalDateTime> = datetime("created").defaultExpression(CurrentDateTime)
     val expires: Column<LocalDateTime> = datetime("expires").clientDefault { LocalDateTime.now().plusMinutes(15) }
+    val consumed: Column<Boolean> = bool("consumed").default(false)
 
     init {
         uniqueIndex(requesterId)
