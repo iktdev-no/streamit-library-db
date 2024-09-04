@@ -9,7 +9,7 @@ import java.time.Duration
 import java.time.LocalDateTime
 
 object delegatedAuthenticationTable: IntIdTable() {
-    val pin: Column<Int> = integer("pin")
+    val pin: Column<String> = varchar("pin", 8)
     val requesterId: Column<String> = char("requesterId", 64)
     val created: Column<LocalDateTime> = datetime("created").defaultExpression(CurrentDateTime)
     val expires: Column<LocalDateTime> = datetime("expires").clientDefault { LocalDateTime.now().plusMinutes(15) }
