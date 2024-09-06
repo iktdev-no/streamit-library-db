@@ -15,4 +15,7 @@ object delegatedAuthenticationTable: IntIdTable() {
     val expires: Column<LocalDateTime> = datetime("expires").clientDefault { LocalDateTime.now().plusMinutes(15) }
     val consumed: Column<Boolean> = bool("consumed").default(false)
 
+    init {
+        uniqueIndex(requesterId, pin)
+    }
 }
