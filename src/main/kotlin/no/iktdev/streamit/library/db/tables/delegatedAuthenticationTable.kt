@@ -11,6 +11,7 @@ import java.time.LocalDateTime
 object delegatedAuthenticationTable: IntIdTable() {
     val pin: Column<String> = varchar("pin", 8)
     val requesterId: Column<String> = char("requesterId", 64)
+    val deviceInfo: Column<String> = varchar("deviceInfo", 256)
     val created: Column<LocalDateTime> = datetime("created").defaultExpression(CurrentDateTime)
     val expires: Column<LocalDateTime> = datetime("expires").clientDefault { LocalDateTime.now().plusMinutes(15) }
     val permitted: Column<Boolean> = bool("permitted").default(false)
@@ -18,7 +19,7 @@ object delegatedAuthenticationTable: IntIdTable() {
     val method = enumerationByName("method", 3, AuthMethod::class) // Brukt metode (PIN eller QR)
 
     init {
-        uniqueIndex(requesterId, pin)
+        uniqueIndex(pin)
     }
 }
 
