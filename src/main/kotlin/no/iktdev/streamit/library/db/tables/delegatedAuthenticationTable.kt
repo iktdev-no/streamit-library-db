@@ -17,6 +17,7 @@ object delegatedAuthenticationTable: IntIdTable() {
     val permitted: Column<Boolean> = bool("permitted").default(false)
     val consumed: Column<Boolean> = bool("consumed").default(false)
     val method = enumerationByName("method", 3, AuthMethod::class) // Brukt metode (PIN eller QR)
+    val ipaddress: Column<String?> = varchar("ipaddress", 39).nullable()
 
     init {
         uniqueIndex(pin)
