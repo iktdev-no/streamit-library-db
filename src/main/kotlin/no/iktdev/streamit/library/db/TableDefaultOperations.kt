@@ -12,7 +12,12 @@ open class TableDefaultOperations<T : Table> {
 
 }
 
-fun <T> withDirtyRead(db: Database? = null, block: () -> T): T? {
+data class TransactionResult<T>(
+    val result: T,
+    val exception: Exception? = null
+)
+
+fun <T> withDirtyRead(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
     return try {
         transaction(db = db, transactionIsolation = Connection.TRANSACTION_READ_UNCOMMITTED) {
             try {
@@ -24,14 +29,17 @@ fun <T> withDirtyRead(db: Database? = null, block: () -> T): T? {
             }
         }
     } catch (e: Exception) {
-        e.printStackTrace()
-        // log the error here or handle the exception as needed
+        if (onError == null) {
+            e.printStackTrace()
+        } else {
+            onError.invoke(e)
+        }
         null
     }
 }
 
 
-fun <T> withTransaction(db: Database? = null, block: () -> T): T? {
+fun <T> withTransaction(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
     return try {
         transaction(db) {
             try {
@@ -43,14 +51,17 @@ fun <T> withTransaction(db: Database? = null, block: () -> T): T? {
             }
         }
     } catch (e: Exception) {
-        e.printStackTrace()
-        // log the error here or handle the exception as needed
+        if (onError == null) {
+            e.printStackTrace()
+        } else {
+            onError.invoke(e)
+        }
         null
     }
 }
 
 
-fun <T> insertWithSuccess(db: Database? = null, block: () -> T): Boolean {
+fun <T> insertWithSuccess(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): Boolean {
     return try {
         transaction(db) {
             try {
@@ -64,7 +75,11 @@ fun <T> insertWithSuccess(db: Database? = null, block: () -> T): Boolean {
         }
         true
     } catch (e: Exception) {
-        e.printStackTrace()
+        if (onError == null) {
+            e.printStackTrace()
+        } else {
+            onError.invoke(e)
+        }
         false
     }
 }
@@ -85,31 +100,34 @@ fun <T> executeOrException(db: Database? = null, rollbackOnFailure: Boolean = fa
             }
         }
     } catch (e: Exception) {
-        e.printStackTrace()
         return e
     }
 }
 
-fun <T> executeWithResult(db: Database? = null, block: () -> T): Pair<T?, Exception?> {
+fun <T> executeWithResult(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
     return try {
         transaction(db) {
             try {
                 val res = block()
                 commit()
-                res to null
+                res
             } catch (e: Exception) {
                 // log the error here or handle the exception as needed
                 rollback()
-                null to e
+                throw e
             }
         }
     } catch (e: Exception) {
-        e.printStackTrace()
-        return null to e
+        if (onError == null) {
+            e.printStackTrace()
+        } else {
+            onError.invoke(e)
+        }
+        return null
     }
 }
 
-fun <T> executeWithStatus(db: Database? = null, block: () -> T): Boolean {
+fun <T> executeWithStatus(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): Boolean {
     return try {
         transaction(db) {
             try {
@@ -123,7 +141,11 @@ fun <T> executeWithStatus(db: Database? = null, block: () -> T): Boolean {
         }
         true
     } catch (e: Exception) {
-        e.printStackTrace()
+        if (onError == null) {
+            e.printStackTrace()
+        } else {
+            onError.invoke(e)
+        }
         false
     }
 }

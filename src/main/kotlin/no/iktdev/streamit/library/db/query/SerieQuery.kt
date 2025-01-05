@@ -17,7 +17,7 @@ class SerieQuery(
     }
 
     override fun insertAndGetStatus(): Boolean {
-        return insertWithSuccess {
+        return insertWithSuccess(block = {
             serie.insertIgnore {
                 it[title] = this@SerieQuery.title
                 it[episode] = this@SerieQuery.episode
@@ -25,7 +25,7 @@ class SerieQuery(
                 it[collection] = this@SerieQuery.collection
                 it[video] = this@SerieQuery.video
             }
-        }
+        })
     }
 
 

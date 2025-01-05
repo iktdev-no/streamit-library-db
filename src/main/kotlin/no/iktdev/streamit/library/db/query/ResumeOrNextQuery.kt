@@ -22,16 +22,16 @@ class ResumeOrNextQuery(
 ) : CommonQueryFuncions {
 
     fun upsertAndGetStatus(): Boolean {
-        val isPresent = withTransaction {
+        val isPresent = withTransaction (block = {
             resumeOrNext.select(
                 resumeOrNext.collection.eq(collection)
                     .and(resumeOrNext.type.eq(type))
                     .and(resumeOrNext.userId.eq(userId))
             ).singleOrNull()
-        } != null
+        }) != null
 
         return if (!isPresent) {
-            executeWithStatus {
+            executeWithStatus (block = {
                 resumeOrNext.insert {
                     it[userId] = this@ResumeOrNextQuery.userId
                     it[type] = this@ResumeOrNextQuery.type
@@ -44,9 +44,9 @@ class ResumeOrNextQuery(
                     it[video] = this@ResumeOrNextQuery.video
                     it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
-            }
+            })
         } else {
-            executeWithStatus {
+            executeWithStatus (block = {
                 resumeOrNext.update({
                     resumeOrNext.collection.eq(collection)
                         .and(resumeOrNext.type.eq(type))
@@ -60,7 +60,7 @@ class ResumeOrNextQuery(
                     it[video] = video
                     it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
-            }
+            })
         }
 
 

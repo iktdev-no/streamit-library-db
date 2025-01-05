@@ -18,7 +18,7 @@ class CatalogQuery(
     }
 
     override fun insertAndGetStatus(): Boolean {
-        return insertWithSuccess {
+        return insertWithSuccess(block = {
             if (this@CatalogQuery.type == "serie") {
                 val existing = catalog.select {
                     (catalog.collection eq this@CatalogQuery.collection) and
@@ -39,7 +39,7 @@ class CatalogQuery(
                 it[iid] = this@CatalogQuery.iid
                 it[genres] = this@CatalogQuery.genres
             }
-        }
+        })
     }
 
 
@@ -65,11 +65,11 @@ class CatalogQuery(
     }
 
     fun getId(): Int? {
-        return withTransaction {
+        return withTransaction(block = {
             catalog.select { catalog.title eq title }.andWhere {
                 catalog.type eq type
             }.map { it[catalog.id].value }.firstOrNull()
-        }
+        })
     }
 
 

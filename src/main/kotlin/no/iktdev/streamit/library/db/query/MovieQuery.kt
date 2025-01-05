@@ -6,11 +6,11 @@ import org.jetbrains.exposed.sql.insertIgnoreAndGetId
 
 class MovieQuery(val videoFile: String): BaseQuery() {
     override fun insertAndGetId(): Int? {
-        return withTransaction {
+        return withTransaction(block =  {
             movie.insertIgnoreAndGetId {
                 it[video] = videoFile
             }?.value
-        }
+        })
     }
 
     override fun insert() {

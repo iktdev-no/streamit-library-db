@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Updated imports + new table">
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Introduced unique on season - episode - collection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/Helpers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/Helpers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/TableDefaultOperations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/TableDefaultOperations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,11 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="streamit-library-db" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="streamit-library-db" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -74,24 +85,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build streamit-library-db.executor": "Run",
-    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Workspace/Streamit/backend/StreamIT Api",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.33896396",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build streamit-library-db.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin script (Beta).build.gradle.kts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/Standalone/CloudGateway&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33896396&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\Standalone\streamit-library-db\src\main\kotlin\no\iktdev\streamit\library\db" />
@@ -186,14 +197,6 @@
         <item itemvalue="Gradle.BaseTest.testDatabaseEnvCreation" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-azul-17.0.10-f644763e9732-59acb15f" />
-        <option value="jdk-22-openjdk-22-3183f394aec4-bad0321e" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -415,7 +418,98 @@
       <option name="presentableId" value="LOCAL−00031" />
       <updated>1715191521300</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL−00032" summary="imports">
+      <option name="closed" value="true" />
+      <created>1715191839291</created>
+      <option name="number" value="LOCAL−00032" />
+      <option name="presentableId" value="LOCAL−00032" />
+      <updated>1715191839291</updated>
+    </task>
+    <task id="LOCAL−00033" summary="Updated">
+      <option name="closed" value="true" />
+      <created>1715206586388</created>
+      <option name="number" value="LOCAL−00033" />
+      <option name="presentableId" value="LOCAL−00033" />
+      <updated>1715206586388</updated>
+    </task>
+    <task id="LOCAL−00034" summary="Updated">
+      <option name="closed" value="true" />
+      <created>1716218999895</created>
+      <option name="number" value="LOCAL−00034" />
+      <option name="presentableId" value="LOCAL−00034" />
+      <updated>1716218999895</updated>
+    </task>
+    <task id="LOCAL−00035" summary="Updated">
+      <option name="closed" value="true" />
+      <created>1716227872054</created>
+      <option name="number" value="LOCAL−00035" />
+      <option name="presentableId" value="LOCAL−00035" />
+      <updated>1716227872054</updated>
+    </task>
+    <task id="LOCAL−00036" summary="Alphanumeric">
+      <option name="closed" value="true" />
+      <created>1725476247896</created>
+      <option name="number" value="LOCAL−00036" />
+      <option name="presentableId" value="LOCAL−00036" />
+      <updated>1725476247896</updated>
+    </task>
+    <task id="LOCAL−00037" summary="Removed unique">
+      <option name="closed" value="true" />
+      <created>1725660237576</created>
+      <option name="number" value="LOCAL−00037" />
+      <option name="presentableId" value="LOCAL−00037" />
+      <updated>1725660237576</updated>
+    </task>
+    <task id="LOCAL−00038" summary="Re-added unique">
+      <option name="closed" value="true" />
+      <created>1725661969807</created>
+      <option name="number" value="LOCAL−00038" />
+      <option name="presentableId" value="LOCAL−00038" />
+      <updated>1725661969807</updated>
+    </task>
+    <task id="LOCAL−00039" summary="Added permitted column">
+      <option name="closed" value="true" />
+      <created>1725756724378</created>
+      <option name="number" value="LOCAL−00039" />
+      <option name="presentableId" value="LOCAL−00039" />
+      <updated>1725756724378</updated>
+    </task>
+    <task id="LOCAL−00040" summary="DeviceInfo column">
+      <option name="closed" value="true" />
+      <created>1725785425973</created>
+      <option name="number" value="LOCAL−00040" />
+      <option name="presentableId" value="LOCAL−00040" />
+      <updated>1725785425973</updated>
+    </task>
+    <task id="LOCAL−00041" summary="IpAddress">
+      <option name="closed" value="true" />
+      <created>1725790299120</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1725790299120</updated>
+    </task>
+    <task id="LOCAL−00042" summary="Fix for time">
+      <option name="closed" value="true" />
+      <created>1725805708257</created>
+      <option name="number" value="LOCAL−00042" />
+      <option name="presentableId" value="LOCAL−00042" />
+      <updated>1725805708257</updated>
+    </task>
+    <task id="LOCAL−00043" summary="Simplified table">
+      <option name="closed" value="true" />
+      <created>1734524448063</created>
+      <option name="number" value="LOCAL−00043" />
+      <option name="presentableId" value="LOCAL−00043" />
+      <updated>1734524448063</updated>
+    </task>
+    <task id="LOCAL−00044" summary="Introduced unique on season - episode - collection">
+      <option name="closed" value="true" />
+      <created>1736118686594</created>
+      <option name="number" value="LOCAL−00044" />
+      <option name="presentableId" value="LOCAL−00044" />
+      <updated>1736118686594</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -430,16 +524,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Init" />
-    <MESSAGE value="Updated MySql" />
-    <MESSAGE value="Updated Tbl" />
-    <MESSAGE value="Added H2" />
-    <MESSAGE value="Added defaults" />
-    <MESSAGE value="Added queries" />
-    <MESSAGE value="Query updates" />
-    <MESSAGE value="Re-added missing column" />
-    <MESSAGE value="Adjusting to use clientDefaults" />
-    <MESSAGE value="Updated to use a default" />
     <MESSAGE value="Corrections to invoke" />
     <MESSAGE value="Corrections to structure" />
     <MESSAGE value="Updated with new table" />
@@ -454,6 +538,17 @@
     <MESSAGE value="Updated column" />
     <MESSAGE value="Updated catalog insert" />
     <MESSAGE value="Updated imports + new table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated imports + new table" />
+    <MESSAGE value="imports" />
+    <MESSAGE value="Updated" />
+    <MESSAGE value="Alphanumeric" />
+    <MESSAGE value="Removed unique" />
+    <MESSAGE value="Re-added unique" />
+    <MESSAGE value="Added permitted column" />
+    <MESSAGE value="DeviceInfo column" />
+    <MESSAGE value="IpAddress" />
+    <MESSAGE value="Fix for time" />
+    <MESSAGE value="Simplified table" />
+    <MESSAGE value="Introduced unique on season - episode - collection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduced unique on season - episode - collection" />
   </component>
 </project>
