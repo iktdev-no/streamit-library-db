@@ -16,4 +16,8 @@ object serie: IntIdTable() {
     val collection: Column<String> = varchar("collection", 250)
     val video: Column<String> = varchar("video", 250).uniqueIndex()
     val added: Column<LocalDateTime> = datetime("added").defaultExpression(CurrentDateTime)
+
+    init {
+        uniqueIndex(episode, season, collection)
+    }
 }
