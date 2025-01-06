@@ -23,7 +23,6 @@ fun <T> withDirtyRead(db: Database? = null, block: () -> T, onError: ((Exception
             try {
                 block()
             } catch (e: Exception) {
-                e.printStackTrace()
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
             }
@@ -45,7 +44,6 @@ fun <T> withTransaction(db: Database? = null, block: () -> T, onError: ((Excepti
             try {
                 block()
             } catch (e: Exception) {
-                e.printStackTrace()
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
             }
@@ -68,7 +66,6 @@ fun <T> insertWithSuccess(db: Database? = null, block: () -> T, onError: ((Excep
                 block()
                 commit()
             } catch (e: Exception) {
-                e.printStackTrace()
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
             }
@@ -134,7 +131,6 @@ fun <T> executeWithStatus(db: Database? = null, block: () -> T, onError: ((Excep
                 block()
                 commit()
             } catch (e: Exception) {
-                e.printStackTrace()
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
             }
