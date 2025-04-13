@@ -14,7 +14,7 @@ object serie: IntIdTable() {
     val episode: Column<Int> = integer("episode")
     val season: Column<Int> = integer("season")
     val collection: Column<String> = varchar("collection", 250)
-    val video: Column<String> = varchar("video", 250).uniqueIndex()
+    val video: Column<String> = varchar("video", 500).uniqueIndex()
     val added: Column<LocalDateTime> = datetime("added").defaultExpression(CurrentDateTime)
 
     init {

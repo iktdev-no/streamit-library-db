@@ -21,14 +21,14 @@ class ResumeOrNextQuery(
     val updated: LocalDateTime? = null
 ) : CommonQueryFuncions {
 
-    fun upsertAndGetStatus(): Boolean {
+    fun upsertAndGetStatus(onError: ((Exception) -> Unit)? = null): Boolean {
         val isPresent = withTransaction (block = {
             resumeOrNext.select(
                 resumeOrNext.collection.eq(collection)
                     .and(resumeOrNext.type.eq(type))
                     .and(resumeOrNext.userId.eq(userId))
             ).singleOrNull()
-        }) != null
+        }, onError = onError) != null
 
         return if (!isPresent) {
             executeWithStatus (block = {
@@ -44,7 +44,7 @@ class ResumeOrNextQuery(
                     it[video] = this@ResumeOrNextQuery.video
                     it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
-            })
+            }, onError = onError)
         } else {
             executeWithStatus (block = {
                 resumeOrNext.update({
@@ -60,7 +60,7 @@ class ResumeOrNextQuery(
                     it[video] = video
                     it[updated] = this@ResumeOrNextQuery.updated ?: LocalDateTime.now()
                 }
-            })
+            }, onError = onError)
         }
 
 
