@@ -10,7 +10,7 @@ class SummaryQuery(
     val description: String
 ): BaseQuery() {
     override fun insertAndGetStatus(): Boolean {
-        return insertWithSuccess(block = {
+        return insertWithSuccess(run = {
             summary.insertIgnore {
                 it[cid] = this@SummaryQuery.cid
                 it[language] = this@SummaryQuery.language

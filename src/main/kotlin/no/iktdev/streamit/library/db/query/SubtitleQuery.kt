@@ -17,7 +17,7 @@ class SubtitleQuery(
         insertAndGetStatus()
     }
     override fun insertAndGetStatus(): Boolean {
-        return insertWithSuccess(block =  {
+        return insertWithSuccess(run =  {
             subtitle.insertIgnore {
                 it[associatedWithVideo] = this@SubtitleQuery.associatedWithVideo
                 it[language] = this@SubtitleQuery.language

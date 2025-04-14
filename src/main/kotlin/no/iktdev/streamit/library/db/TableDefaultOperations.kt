@@ -17,11 +17,11 @@ data class TransactionResult<T>(
     val exception: Exception? = null
 )
 
-fun <T> withDirtyRead(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
+fun <T> withDirtyRead(db: Database? = null, onError: ((Exception) -> Unit)? = null, run: () -> T): T? {
     return try {
         transaction(db = db, transactionIsolation = Connection.TRANSACTION_READ_UNCOMMITTED) {
             try {
-                block()
+                run()
             } catch (e: Exception) {
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
@@ -38,11 +38,11 @@ fun <T> withDirtyRead(db: Database? = null, block: () -> T, onError: ((Exception
 }
 
 
-fun <T> withTransaction(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
+fun <T> withTransaction(db: Database? = null, onError: ((Exception) -> Unit)? = null, run: () -> T): T? {
     return try {
         transaction(db) {
             try {
-                block()
+                run()
             } catch (e: Exception) {
                 // log the error here or handle the exception as needed
                 throw e // Optionally, you can rethrow the exception if needed
@@ -59,11 +59,11 @@ fun <T> withTransaction(db: Database? = null, block: () -> T, onError: ((Excepti
 }
 
 
-fun <T> insertWithSuccess(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): Boolean {
+fun <T> insertWithSuccess(db: Database? = null, onError: ((Exception) -> Unit)? = null, run: () -> T): Boolean {
     return try {
         transaction(db) {
             try {
-                block()
+                run()
                 commit()
             } catch (e: Exception) {
                 // log the error here or handle the exception as needed
@@ -81,11 +81,11 @@ fun <T> insertWithSuccess(db: Database? = null, block: () -> T, onError: ((Excep
     }
 }
 
-fun <T> executeOrException(db: Database? = null, rollbackOnFailure: Boolean = false, block: () -> T): Exception? {
+fun <T> executeOrException(db: Database? = null, rollbackOnFailure: Boolean = false, run: () -> T): Exception? {
     return try {
         transaction(db) {
             try {
-                block()
+                run()
                 commit()
                 null
             } catch (e: Exception) {
@@ -101,11 +101,11 @@ fun <T> executeOrException(db: Database? = null, rollbackOnFailure: Boolean = fa
     }
 }
 
-fun <T> executeWithResult(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): T? {
+fun <T> executeWithResult(db: Database? = null, onError: ((Exception) -> Unit)? = null, run: () -> T): T? {
     return try {
         transaction(db) {
             try {
-                val res = block()
+                val res = run()
                 commit()
                 res
             } catch (e: Exception) {
@@ -124,11 +124,11 @@ fun <T> executeWithResult(db: Database? = null, block: () -> T, onError: ((Excep
     }
 }
 
-fun <T> executeWithStatus(db: Database? = null, block: () -> T, onError: ((Exception) -> Unit)? = null): Boolean {
+fun <T> executeWithStatus(db: Database? = null, onError: ((Exception) -> Unit)? = null, run: () -> T): Boolean {
     return try {
         transaction(db) {
             try {
-                block()
+                run()
                 commit()
             } catch (e: Exception) {
                 // log the error here or handle the exception as needed

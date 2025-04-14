@@ -22,7 +22,7 @@ class ResumeOrNextQuery(
 ) : CommonQueryFuncions {
 
     fun upsertAndGetStatus(onError: ((Exception) -> Unit)? = null): Boolean {
-        val isPresent = withTransaction (block = {
+        val isPresent = withTransaction (run = {
             resumeOrNext.select(
                 resumeOrNext.collection.eq(collection)
                     .and(resumeOrNext.type.eq(type))
@@ -31,7 +31,7 @@ class ResumeOrNextQuery(
         }, onError = onError) != null
 
         return if (!isPresent) {
-            executeWithStatus (block = {
+            executeWithStatus (run = {
                 resumeOrNext.insert {
                     it[userId] = this@ResumeOrNextQuery.userId
                     it[type] = this@ResumeOrNextQuery.type
@@ -46,7 +46,7 @@ class ResumeOrNextQuery(
                 }
             }, onError = onError)
         } else {
-            executeWithStatus (block = {
+            executeWithStatus (run = {
                 resumeOrNext.update({
                     resumeOrNext.collection.eq(collection)
                         .and(resumeOrNext.type.eq(type))
