@@ -1,23 +1,23 @@
 plugins {
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "2.1.0"
     id("maven-publish")
 }
 
 group = "no.iktdev.streamit.library"
-version = "1.0-SNAPSHOT"
-val named = "Streamit-library-db"
+version = "0.5.17-SNAPSHOT"
+val named = "streamit-library-db"
 
 repositories {
     mavenCentral()
 }
 
-val exposedVersion = "0.44.0"
+val exposedVersion = "0.61.0"
 dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
-    implementation ("mysql:mysql-connector-java:8.0.29")
+    implementation("mysql:mysql-connector-java:8.0.29")
 
     testImplementation(kotlin("test"))
     testImplementation("io.mockk:mockk:1.12.0")

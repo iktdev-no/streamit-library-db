@@ -16,4 +16,9 @@ abstract class DataSource(val databaseName: String, val address: String, val por
         } else address
     }
 
+    /**
+     * Creates a database instance and connects to it
+     */
+    abstract fun toDatabase(): Database
+
 }

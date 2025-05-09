@@ -4,16 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Introduced unique on season - episode - collection">
+    <list default="true" id="964ad5e5-d173-4d10-9fbe-ca000211861e" name="Changes" comment="Changed structure">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/ext/UpsertResult.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/Shared.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/authentication/DelegatedAuthenticationTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/authentication/RegisteredDevicesTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/CatalogTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/ContinueWatchTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/GenreTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/LatestEpisodeProgressView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/MovieTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/ProgressTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/SerieTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/SubtitleTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/SummaryTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/TableDto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/content/TitleTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/other/CastErrorTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/other/DataAudioTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/other/DataVideoTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/user/ProfileImageTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/user/UserTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/H2Datasource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/Helpers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/Helpers.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/TableDefaultOperations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/TableDefaultOperations.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/DataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/DataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/MySqlDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/datasource/MySqlDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/BaseQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CatalogQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/CommonQueryFuncions.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/GenreQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/MovieQuery.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/ResumeOrNextQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SerieQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SubtitleQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/query/SummaryQuery.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/CatalogTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/GenreTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/MovieTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProfileImageTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ProgressTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ResumeOrNextTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/ResumeOrNextTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SerieTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SubtitleTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/SummaryTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/TitleTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/UserTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/delegatedAuthenticationTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/CastErrorTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataAudioTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/helper/DataVideoTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/no/iktdev/streamit/library/db/tables/registeredDevices.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/BaseTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/H2DataSource.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +89,19 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="streamit-library-db" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="streamit-library-db" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="streamit-library-db" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -53,22 +113,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
         <option value="Kotlin Object" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-core/0.38.2/abad7e056bdba7f287dbef6675a1fa98ed9536c7/exposed-core-0.38.2-sources.jar!/org/jetbrains/exposed/sql/Column.kt" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-java-time/0.38.2/13507144081e233f05a97f340c1fa85609b8fcac/exposed-java-time-0.38.2-sources.jar!/org/jetbrains/exposed/sql/javatime/JavaDateColumnType.kt" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-java-time/0.38.2/13507144081e233f05a97f340c1fa85609b8fcac/exposed-java-time-0.38.2-sources.jar!/org/jetbrains/exposed/sql/javatime/JavaDateFunctions.kt" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.exposed/exposed-java-time/0.44.0/251d83e147a79e40c3e32929570ccd57493ad4b1/exposed-java-time-0.44.0-sources.jar!/org/jetbrains/exposed/sql/javatime/JavaDateFunctions.kt" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.jdks/jbr-17.0.8/lib/src.zip!/java.base/java/time/LocalDateTime.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,39 +133,63 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2S1gwH35ZohnAlrB1NZgkiUDNCe" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build streamit-library-db.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin script (Beta).build.gradle.kts.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/Standalone/CloudGateway&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.33896396&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.BaseTest.executor": "Run",
+    "Gradle.Build streamit-library-db.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.streamit-library-db [build].executor": "Run",
+    "Gradle.streamit-library-db [publishAllPublicationsToStreamit-library-dbRepository].executor": "Run",
+    "Gradle.streamit-library-db [publishReposilitePublicationToMavenLocal].executor": "Run",
+    "Gradle.streamit-library-db [publishReposilitePublicationToStreamit-library-dbRepository].executor": "Run",
+    "Gradle.streamit-library-db [publishToMavenLocal].executor": "Run",
+    "Gradle.streamit-library-db [publish].executor": "Run",
+    "Gradle.streamit-library-db [wrapper --gradle-version 7.6.3].executor": "Run",
+    "JUnit.All in streamit-library-db.test.executor": "Run",
+    "Kotlin script (Beta).build.gradle.kts.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/mount/870 EVO 1TB/Workspace/Standalone/streamit-library-db",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.33896396",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\Standalone\streamit-library-db\src\main\resources" />
       <recent name="D:\Workspace\Standalone\streamit-library-db\src\main\kotlin\no\iktdev\streamit\library\db" />
       <recent name="D:\Workspace\Streamit\backend\streamit-library-db\src\main\kotlin\no\iktdev\streamit\library\db\tables" />
       <recent name="D:\Workspace\Standalone\streamit-library-db\src\main\kotlin\no\iktdev\streamit\library\db\tables" />
       <recent name="D:\Workspace\Standalone\streamit-library-db\src\main\kotlin\no\iktdev\streamit\library\db\datasource" />
     </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="no.iktdev.streamit.library.db.tables.user" />
+      <recent name="no.iktdev.streamit.library.db.tables.content" />
+      <recent name="no.iktdev.streamit.library.db.tables.authentication" />
+    </key>
   </component>
-  <component name="RunManager" selected="Kotlin script (Beta).build.gradle.kts">
-    <configuration name="BaseTest.testCreateDatabase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle wrapper --gradle-version 7.6.3" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.All in streamit-library-db.test">
+    <configuration name="BaseTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -125,7 +202,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;BaseTest.testCreateDatabase&quot;" />
+            <option value="&quot;BaseTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -136,7 +213,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="BaseTest.testDatabaseEnvCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="streamit-library-db [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -147,31 +224,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;BaseTest.testDatabaseEnvCreation&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="streamit-library-db [publishReposilitePublicationToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="publishReposilitePublicationToMavenLocal" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -182,19 +235,80 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="build.gradle.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <module name="streamit-library-db" />
-      <option name="filePath" value="$PROJECT_DIR$/build.gradle.kts" />
+    <configuration name="streamit-library-db [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="reposilitePassword" value="Potet" />
+            <entry key="reposiliteUsername" value="bp" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publish" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="streamit-library-db [wrapper --gradle-version 7.6.3]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="wrapper" />
+            <option value="--gradle-version" />
+            <option value="7.6.3" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="All in streamit-library-db.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="streamit-library-db.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.BaseTest" />
+      <item itemvalue="Gradle.streamit-library-db [wrapper --gradle-version 7.6.3]" />
+      <item itemvalue="Gradle.streamit-library-db [build]" />
+      <item itemvalue="Gradle.streamit-library-db [publish]" />
+      <item itemvalue="JUnit.All in streamit-library-db.test" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin script (Beta).build.gradle.kts" />
-        <item itemvalue="Gradle.streamit-library-db [publishReposilitePublicationToMavenLocal]" />
-        <item itemvalue="Gradle.BaseTest.testCreateDatabase" />
-        <item itemvalue="Gradle.BaseTest.testDatabaseEnvCreation" />
+        <item itemvalue="JUnit.All in streamit-library-db.test" />
+        <item itemvalue="Gradle.streamit-library-db [wrapper --gradle-version 7.6.3]" />
+        <item itemvalue="Gradle.streamit-library-db [build]" />
+        <item itemvalue="Gradle.BaseTest" />
+        <item itemvalue="Gradle.streamit-library-db [publish]" />
       </list>
     </recent_temporary>
   </component>
@@ -509,7 +623,42 @@
       <option name="presentableId" value="LOCAL−00044" />
       <updated>1736118686594</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL−00045" summary="Updated with errorhandling">
+      <option name="closed" value="true" />
+      <created>1736120946277</created>
+      <option name="number" value="LOCAL−00045" />
+      <option name="presentableId" value="LOCAL−00045" />
+      <updated>1736120946277</updated>
+    </task>
+    <task id="LOCAL−00046" summary="Updated with errorhandling">
+      <option name="closed" value="true" />
+      <created>1736123989187</created>
+      <option name="number" value="LOCAL−00046" />
+      <option name="presentableId" value="LOCAL−00046" />
+      <updated>1736123989187</updated>
+    </task>
+    <task id="LOCAL−00047" summary="Disabling exposed logging">
+      <option name="closed" value="true" />
+      <created>1736128201447</created>
+      <option name="number" value="LOCAL−00047" />
+      <option name="presentableId" value="LOCAL−00047" />
+      <updated>1736128201447</updated>
+    </task>
+    <task id="LOCAL−00048" summary="Updated length">
+      <option name="closed" value="true" />
+      <created>1744585387479</created>
+      <option name="number" value="LOCAL−00048" />
+      <option name="presentableId" value="LOCAL−00048" />
+      <updated>1744585387479</updated>
+    </task>
+    <task id="LOCAL−00049" summary="Changed structure">
+      <option name="closed" value="true" />
+      <created>1744673918439</created>
+      <option name="number" value="LOCAL−00049" />
+      <option name="presentableId" value="LOCAL−00049" />
+      <updated>1744673918439</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -524,10 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Corrections to invoke" />
-    <MESSAGE value="Corrections to structure" />
-    <MESSAGE value="Updated with new table" />
-    <MESSAGE value="Updated with new table and upsert" />
     <MESSAGE value="Adjustment to table + added helper functions" />
     <MESSAGE value="Removed nullable" />
     <MESSAGE value="Using manual upsert" />
@@ -549,6 +694,10 @@
     <MESSAGE value="Fix for time" />
     <MESSAGE value="Simplified table" />
     <MESSAGE value="Introduced unique on season - episode - collection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced unique on season - episode - collection" />
+    <MESSAGE value="Updated with errorhandling" />
+    <MESSAGE value="Disabling exposed logging" />
+    <MESSAGE value="Updated length" />
+    <MESSAGE value="Changed structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed structure" />
   </component>
 </project>

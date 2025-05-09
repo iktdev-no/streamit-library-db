@@ -3,8 +3,6 @@ import io.mockk.mockkObject
 import io.mockk.unmockkAll
 import no.iktdev.streamit.library.db.DatabaseEnv
 import no.iktdev.streamit.library.db.datasource.MySqlDataSource
-import org.h2.jdbcx.JdbcDataSource
-import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -46,14 +44,12 @@ class BaseTest {
     @Test
     fun testCreateDatabase() {
 
-                // Use the H2 in-memory database for testing
-        val h2DataSource = H2DataSource(JdbcDataSource().apply {
-            setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;")
-        }, DatabaseEnv.database ?: "test_database")
+        val h2Datasource = H2Datasource("test_database")
+        val connectionInstance = h2Datasource.createDatabase()
 
-        transaction(Database.connect(h2DataSource)) {
+        transaction(connectionInstance) {
             // Execute createDatabase()
-            val createdDatabase = h2DataSource.createDatabase()
+            val createdDatabase = h2Datasource.createDatabase()
 
             // Assert the expected behavior
             assertNotNull(createdDatabase)

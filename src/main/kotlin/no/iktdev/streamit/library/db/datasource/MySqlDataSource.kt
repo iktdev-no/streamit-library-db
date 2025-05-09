@@ -60,7 +60,7 @@ open class MySqlDataSource(databaseName: String, address: String, port: String =
         )
     }
 
-    fun toDatabase(): Database {
+    override fun toDatabase(): Database {
         return Database.connect(
             "${toConnectionUrl()}/$databaseName",
             user = username,
