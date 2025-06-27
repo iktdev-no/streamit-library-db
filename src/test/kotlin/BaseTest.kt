@@ -46,13 +46,12 @@ class BaseTest {
 
         val h2Datasource = H2Datasource("test_database")
         val connectionInstance = h2Datasource.createDatabase()
+        assertNotNull(connectionInstance)
 
         transaction(connectionInstance) {
             // Execute createDatabase()
-            val createdDatabase = h2Datasource.createDatabase()
 
             // Assert the expected behavior
-            assertNotNull(createdDatabase)
             assertEquals("test_database", "test_database")
 
             // Perform additional assertions or database operations
