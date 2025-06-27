@@ -1,12 +1,14 @@
 package no.iktdev.streamit.library.db.tables.content
 
 import no.iktdev.streamit.library.db.ext.UpsertResult
+import no.iktdev.streamit.library.db.objects.ProgressTableObject
 import no.iktdev.streamit.library.db.tables.Shared
 import no.iktdev.streamit.library.db.timestampToLocalDateTime
 import no.iktdev.streamit.library.db.withTransaction
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.javatime.datetime
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.sql.PreparedStatement
@@ -14,7 +16,7 @@ import java.time.LocalDateTime
 import kotlin.String
 
 
-object ProgressTable : IntIdTable(name = "Progress") {
+object ProgressTable : IntIdTable(name = "progress") {
 
     val guid: Column<String> = varchar("guid", Shared.userIdLength)
     val type: Column<String> = varchar("type", 10)
@@ -28,48 +30,60 @@ object ProgressTable : IntIdTable(name = "Progress") {
     val played: Column<LocalDateTime?> = datetime("played").nullable()
 
     init {
-        uniqueIndex("unique_progress_on_each_user", guid, title, collection, type, video)
+        uniqueIndex("unique_progress_on_each_user", guid, title, collection, type, season, episode)
         index(true, guid, collection, season, episode)
+    }
+
+    fun selectUserRecords(userId: String): Query {
+        return ProgressTable.selectAll()
+            .where { guid eq userId }
     }
 
     /**
      * @return All progress record for user
      */
-    fun selectRecords(userId: String): Query {
-        return ProgressTable.selectAll()
+    fun selectRecords(userId: String, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .where { guid eq userId }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
-    fun selectMovieRecords(userId: String): Query {
-        return selectRecords(userId)
+    fun selectMovieRecords(userId: String, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { type.eq("movie") }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
-    fun selectSerieRecords(userId: String): Query {
-        return selectRecords(userId)
+    fun selectSerieRecords(userId: String, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { type.eq("serie") }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
-    fun selectSerieRecordsAfter(userId: String, time: Int): Query {
-        return selectSerieRecords(userId)
+    fun selectSerieRecordsAfter(userId: String, time: Int, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { played.greater(timestampToLocalDateTime(time)) }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
-    fun selectMovieRecordsAfter(userId: String, time: Int): Query {
-        return selectMovieRecords(userId)
+    fun selectMovieRecordsAfter(userId: String, time: Int, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { played.greater(timestampToLocalDateTime(time)) }
+            .map { ProgressTableObject.fromRow(it) }
     }
-
-    fun selectMovieRecordOnTitle(userId: String, movieTitle: String): Query {
-        return selectMovieRecords(userId)
+        ?: emptyList()
+    fun selectMovieRecordOnTitle(userId: String, movieTitle: String, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { title.eq(movieTitle) }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
-    fun selectSerieRecordOnCollection(userId: String, collection: String): Query {
-        return selectSerieRecords(userId)
+    fun selectSerieRecordOnCollection(userId: String, collection: String, database: Database? = null, onError: ((Exception) -> Unit)? = null): List<ProgressTableObject> = withTransaction(database, onError) {
+        selectUserRecords(userId)
             .andWhere { ProgressTable.collection.eq(collection) }
             .orWhere { type.eq(collection) }
-    }
+            .map { ProgressTableObject.fromRow(it) }
+    } ?: emptyList()
 
     fun upsertMovieRecord(
         userId: String,
@@ -165,9 +179,7 @@ object ProgressTable : IntIdTable(name = "Progress") {
         }
     }
 
-    fun selectResumeEpisode(guid: String, limit: Int): Query {
-        val cutoffSeconds = 5
-
+    fun selectLatestEpisodeWatched(guid: String): Query {
         return ProgressTable
             .join(
                 SerieTable, JoinType.INNER,
@@ -188,115 +200,46 @@ object ProgressTable : IntIdTable(name = "Progress") {
                 ProgressTable.played,
                 ProgressTable.progress,
                 ProgressTable.duration,
+                *CatalogTable.columns.toTypedArray(),
                 *SerieTable.columns.toTypedArray()
             )
             .where {
                 (ProgressTable.guid eq guid) and
                         (ProgressTable.type eq "serie") and
-                        (ProgressTable.progress less (ProgressTable.duration - cutoffSeconds)) and
                         (ProgressTable.episode eq SerieTable.episode) and
                         (ProgressTable.season eq SerieTable.season) and
                         ((ContinueWatchTable.hide eq false) or ContinueWatchTable.hide.isNull())
             }
             .orderBy(ProgressTable.played, SortOrder.DESC)
+    }
+
+    fun selectResumeEpisode(guid: String, limit: Int, cutoffSeconds: Int = 5): Query {
+        return selectLatestEpisodeWatched(guid)
+            .andWhere { (ProgressTable.progress lessEq (ProgressTable.duration - cutoffSeconds)) }
             .limit(limit)
     }
 
 
-    private fun internalGetCompletedEpisodes(guid: String, limit: Int, cutoff: Int): List<InternalProgressData> =
-        transaction {
-            val query = """
-            SELECT id, guid, collection, season, episode, progress, duration, played, video, title
-            FROM (
-                SELECT *,
-                       ROW_NUMBER() OVER (
-                           PARTITION BY guid, collection
-                           ORDER BY season DESC, episode DESC
-                       ) AS rn
-                FROM progress
-                WHERE guid = ?
-                  AND episode IS NOT NULL
-                  AND season IS NOT NULL
-                  AND type = 'serie'
-            ) ranked
-            WHERE rn = 1
-              AND progress > (duration - ?)
-              ORDER BY played DESC
-            LIMIT ?;
-        """.trimIndent()
+    fun selectCompletedEpisodes(guid: String, limit: Int, cutoffSeconds: Int = 5): Query {
+        return selectLatestEpisodeWatched(guid)
+            .andWhere { (ProgressTable.progress greater (ProgressTable.duration - cutoffSeconds)) }
+            .limit(limit)
 
-            exec(
-                query,
-                args = listOf(
-                    VarCharColumnType() to guid,
-                    IntegerColumnType() to cutoff,
-                    IntegerColumnType() to limit
-                )
-            ) { rs ->
-                val internalTable = mutableListOf<InternalProgressData>()
-                while (rs.next()) {
-                    internalTable += InternalProgressData(
-                        collection = rs.getString("collection"),
-                        season = rs.getInt("season"),
-                        episode = rs.getInt("episode"),
-                    )
-                }
-                internalTable
-            } ?: emptyList()
-        }
-
-
-    fun selectNextEpisodesWithCatalog(guid: String, limit: Int): List<Pair<InternalSerieTableDto, InternalCatalogTableDto>> {
-        val cutoffSeconds = 5  // Eksempel: vi definerer en cutoff for progress.
-        val completedEpisodes = internalGetCompletedEpisodes(guid, limit, cutoffSeconds)
-
-        return completedEpisodes.mapNotNull { completedEpisode ->
-            transaction {
-                // Sett opp join-spørringen med en additionalConstraint som joiner på collection.
-                val joinQuery: Query = SerieTable.join(
-                    otherTable = CatalogTable,
-                    joinType = JoinType.INNER,
-                    additionalConstraint = { SerieTable.collection eq CatalogTable.collection }
-                )
-                    .selectAll()
-                    .andWhere {
-                    (SerieTable.collection eq completedEpisode.collection) and
-                            (
-                                    (SerieTable.season greater completedEpisode.season) or
-                                            (
-                                                    (SerieTable.season eq completedEpisode.season) and
-                                                            (SerieTable.episode greater completedEpisode.episode)
-                                                    )
-                                    )
-                }
-                    .orderBy(SerieTable.season, SortOrder.ASC)
-                    .orderBy(SerieTable.episode, SortOrder.ASC)
-                    .limit(1)
-
-                // Hent første rad (dersom den finnes) og mapper den til våre data-klasser.
-                joinQuery.firstOrNull()?.let { row ->
-                    val serie = InternalSerieTableDto(
-                        title = row[SerieTable.title],
-                        episode = row[SerieTable.episode],
-                        season = row[SerieTable.season],
-                        collection = row[SerieTable.collection],
-                        video = row[SerieTable.video],
-                        added = row[SerieTable.added]
-                    )
-                    val catalog = InternalCatalogTableDto(
-                        title = row[CatalogTable.title],
-                        cover = row[CatalogTable.cover],
-                        type = row[CatalogTable.type],
-                        collection = row[CatalogTable.collection],
-                        iid = row[CatalogTable.iid],
-                        genres = row[CatalogTable.genres],
-                        added = row[CatalogTable.added]
-                    )
-                    serie to catalog
-                }
-            }
-        }
     }
+
+    fun selectNextEpisode(collection: String, currentSeason: Int, currentEpisode: Int): Query {
+        return SerieTable.selectAll()
+                .where {
+                    (SerieTable.collection eq collection) and (
+                            (SerieTable.season greater currentSeason) or
+                                    ((SerieTable.season eq currentSeason) and (SerieTable.episode greater currentEpisode))
+                            )
+                }
+                .orderBy(SerieTable.season, SortOrder.ASC)
+                .orderBy(SerieTable.episode, SortOrder.ASC)
+                .limit(1)
+    }
+
 
     data class InternalProgressData(
         val collection: String,

@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.javatime.datetime
 import org.jetbrains.exposed.sql.statements.InsertStatement
 import java.time.LocalDateTime
 
-object SerieTable: IntIdTable(name = "Serie") {
+object SerieTable: IntIdTable(name = "serie") {
     val title: Column<String?> = varchar("title", 250).nullable()
     val episode: Column<Int> = integer("episode")
     val season: Column<Int> = integer("season")

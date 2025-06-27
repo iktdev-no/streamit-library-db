@@ -1,14 +1,18 @@
+import java.io.ByteArrayOutputStream
+import kotlin.toString
+
 plugins {
     kotlin("jvm") version "2.1.0"
     id("maven-publish")
 }
 
 group = "no.iktdev.streamit.library"
-version = "0.5.17-SNAPSHOT"
+version = "1.0"
 val named = "streamit-library-db"
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 val exposedVersion = "0.61.0"
@@ -31,9 +35,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-kotlin {
-    jvmToolchain(8)
-}
+
 
 val reposiliteUrl = if (version.toString().endsWith("SNAPSHOT")) {
     "https://reposilite.iktdev.no/snapshots"
@@ -61,6 +63,7 @@ publishing {
         }
     }
     repositories {
+        mavenLocal()
         maven {
             name = named
             url = uri(reposiliteUrl)
@@ -71,3 +74,42 @@ publishing {
         }
     }
 }
+
+fun findLatestTag(): String {
+    val stdout = ByteArrayOutputStream()
+    exec {
+        commandLine = listOf("git", "describe", "--tags", "--abbrev=0")
+        standardOutput = stdout
+        isIgnoreExitValue = true
+    }
+    return stdout.toString().trim().removePrefix("v")
+}
+
+fun isSnapshotBuild(): Boolean {
+    // Use environment variable or branch name to detect snapshot
+    val ref = System.getenv("GITHUB_REF") ?: ""
+    return ref.endsWith("/master") || ref.endsWith("/main")
+}
+
+fun getCommitsSinceTag(tag: String): Int {
+    val stdout = ByteArrayOutputStream()
+    exec {
+        commandLine = listOf("git", "rev-list", "$tag..HEAD", "--count")
+        standardOutput = stdout
+        isIgnoreExitValue = true
+    }
+    return stdout.toString().trim().toIntOrNull() ?: 0
+}
+
+val latestTag = findLatestTag()
+val versionString = if (isSnapshotBuild()) {
+    val parts = latestTag.split(".")
+    val patch = parts.lastOrNull()?.toIntOrNull()?.plus(1) ?: 1
+    val base = if (parts.size >= 2) "${parts[0]}.${parts[1]}" else latestTag
+    val buildNumber = getCommitsSinceTag("v$latestTag")
+    "$base.$patch-SNAPSHOT-$buildNumber"
+} else {
+    latestTag
+}
+
+version = versionString

@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.insertIgnore
 import org.jetbrains.exposed.sql.statements.InsertStatement
 
-object SummaryTable : IntIdTable(name = "Summary") {
+object SummaryTable : IntIdTable(name = "summary") {
     val description: Column<String> = text("description")
     val language: Column<String> = varchar("language", 16)
     val cid: Column<Int> = integer("cid")

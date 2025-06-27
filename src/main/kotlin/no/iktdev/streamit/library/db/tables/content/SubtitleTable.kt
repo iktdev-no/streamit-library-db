@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.statements.InsertStatement
 import java.io.File
 
-object SubtitleTable : IntIdTable(name = "Subtitle") {
+object SubtitleTable : IntIdTable(name = "subtitle") {
     val associatedWithVideo: Column<String> = varchar("associatedWithVideo", 250)
     val language: Column<String> = varchar("language", 16)
     val subtitle: Column<String> = varchar("subtitle", 250)

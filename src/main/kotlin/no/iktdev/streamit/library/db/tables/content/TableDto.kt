@@ -14,6 +14,7 @@ data class InternalSerieTableDto(
 )
 
 data class InternalCatalogTableDto(
+    val id: Int,
     val title: String,
     val cover: String?,
     val type: String,

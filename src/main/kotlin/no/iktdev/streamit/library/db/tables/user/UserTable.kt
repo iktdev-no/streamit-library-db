@@ -3,7 +3,7 @@ package no.iktdev.streamit.library.db.tables.user
 import no.iktdev.streamit.library.db.ext.UpsertResult
 import org.jetbrains.exposed.sql.*
 
-object UserTable : Table(name = "Users") {
+object UserTable : Table(name = "users") {
     val guid: Column<String> = varchar("guid", 50)
     val name: Column<String> = varchar("name", 50).uniqueIndex()
     val image: Column<String> = varchar("image", 200)
