@@ -11,17 +11,15 @@ import org.jetbrains.exposed.sql.transactions.transaction
 object FavoriteTable: IntIdTable(name = "Favorites") {
     val userId: Column<String> = varchar("userId", 50)
     val catalogId: Column<Int> = integer("catalogId")
-    val title = text("catalogTitle").nullable()
 
     init {
         uniqueIndex(userId, catalogId)
     }
 
-    fun addFavorite(userId: String, catalogId: Int, title: String?): Boolean = transaction {
+    fun addFavorite(userId: String, catalogId: Int): Boolean = transaction {
         FavoriteTable.insertIgnore {
             it[FavoriteTable.userId] = userId
             it[FavoriteTable.catalogId] = catalogId
-            it[FavoriteTable.title] = title
         }.insertedCount != 0
     }
 
