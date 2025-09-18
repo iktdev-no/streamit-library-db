@@ -165,7 +165,9 @@ object ProgressTable : IntIdTable(name = "progress") {
             val updatedRows = ProgressTable.update({
                 (guid eq userId) and
                         (ProgressTable.title eq trimmedTitle) and
-                        (type eq "serie")
+                        (type eq "serie") and
+                        (ProgressTable.episode eq episode) and
+                        (ProgressTable.season eq season)
             }) {
                 it[this.progress] = progress
                 it[this.duration] = duration
